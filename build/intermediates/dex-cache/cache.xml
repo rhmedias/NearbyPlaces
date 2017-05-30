@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\.android\build-cache\55e6f5457aef434ff980e731d0e4561ed6b6695c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7113302c965566b66df46c6ca75ea301576114a5">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\RestaurantFinder\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_50cafd6f7e3bb28262b77138ecb3bab2c8cb3edf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.1\constraint-layout-solver-1.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1ad79631209e77b0a2730fc112b4cc0c66a95132">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\RestaurantFinder\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.1_48c3778fc67c458707d62cad1837f9591448b66d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\AndroidStudioProjects\RestaurantFinder\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\RestaurantFinder\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5f1bd7dc5ee1bfb3651630f13da52c482f6bf6f0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\RestaurantFinder\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.13.0_860192b36bd77bce9f9295b80214516438858e7b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\AndroidStudioProjects\RestaurantFinder\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1c482ce2d8d365454c9e33157937dcfb7d1291fd">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\RestaurantFinder\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6cce9ab22ec8a90943dbdb87ade0634dbe0c59ec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.8.0\5a11f020cce2d11eb71ba916700600e18c4547e7\okhttp-3.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5a11f020cce2d11eb71ba916700600e18c4547e7">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\RestaurantFinder\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.8.0_d5b4ae541fa33b23f2a2ccf91c541a9035afee01\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.3.0\bcacde6a8ccedcc56c127403d26b76072fe6214d\retrofit-2.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bcacde6a8ccedcc56c127403d26b76072fe6214d">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\RestaurantFinder\app\build\intermediates\transforms\dex\debug\folders\1000\10\retrofit-2.3.0_103577659fb8a4bb7efdfd25dfc810de39842276\classes.dex" />
+    </item>
+
+</items>
