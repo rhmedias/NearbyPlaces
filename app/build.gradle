@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
-        applicationId "com.example.tosin.myapplication"
+        applicationId "com.restaurantfinder"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -25,6 +25,9 @@ ext {
     junit = '4.12'
     constraintlayoutVer = '1.0.1'
     retrofit2 = '2.3.0'
+    gson = '2.7'
+    okhttp = '2.7.0'
+    javaxAnn = '10.0-b28'
     playServiceVer = '10.0.1'
 }
 
@@ -47,6 +50,10 @@ dependencies {
 
     // Retrofit
     compile "com.squareup.retrofit2:retrofit:${retrofit2}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofit2}"
+    compile "com.google.code.gson:gson:${gson}"
+    compile "com.squareup.okhttp:okhttp:${okhttp}"
+    provided "org.glassfish:javax.annotation:${javaxAnn}"
 
     // PlayServices
     compile "com.google.android.gms:play-services:${playServiceVer}"
