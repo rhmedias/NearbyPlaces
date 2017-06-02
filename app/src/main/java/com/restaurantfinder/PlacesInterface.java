@@ -1,12 +1,10 @@
 package com.restaurantfinder;
 
-import com.restaurantfinder.model.Places;
-
-import java.util.List;
+import com.restaurantfinder.model.NearbyPlaces;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * @author Tosin Onikute.
@@ -14,8 +12,12 @@ import retrofit2.http.Path;
 
 public interface PlacesInterface {
 
-    @GET("/place/{latlng}")
-    Call<List<Places>> getPlaces(@Path("latlng") String latlng);
-
+    @GET("nearbysearch/json")
+    Call<NearbyPlaces> getPlaces(
+            @Query("location") String location,
+            @Query("radius") int radius,
+            @Query("keyword") String keyword,
+            @Query("type") String type,
+            @Query("key") String key);
 
 }

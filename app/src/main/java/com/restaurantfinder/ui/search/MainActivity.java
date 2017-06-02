@@ -1,43 +1,34 @@
 package com.restaurantfinder.ui.search;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.text.Spanned;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.restaurantfinder.R;
+import com.restaurantfinder.client.RestClient;
+import com.restaurantfinder.model.NearbyPlaces;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * @author Tosin Onikute.
@@ -46,7 +37,7 @@ import com.restaurantfinder.R;
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
 
-    private String TAG = "MainActivity";
+    private String TAG = this.getClass().getSimpleName();
 
     /**
      * GoogleApiClient wraps our service connection to Google Play Services and provides access
@@ -61,20 +52,108 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private final LatLngBounds BOUNDS_GREATER_SYDNEY = new LatLngBounds(
             new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
 
+    private Button searchButton;
+    private String apiKey;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, 0 /* clientId */, this)
-                .addApi(Places.GEO_DATA_API)
-                .build();
+        // initialize the Google API client
+        initializeApiClient();
 
         setContentView(R.layout.activity_main);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
+
+
+        // Retrieve the AutoCompleteTextView that will display Place suggestions.
+        loadAutoComplete();
+
+        // Get API KEY
+        apiKey = getApplicationContext().getResources().getString(R.string.GEO_API_KEY);
+
+
+        searchButton = (Button) findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fetch();
+            }
+        });
+
+
+
+
+    }
+
+
+    public void fetch(){
+
+
+        Call<NearbyPlaces> call =
+                RestClient.getInstance().getPlaces(
+                        "-33.8670522,151.1957362",
+                        500,
+                        "cruise",
+                        "restaurant",
+                        apiKey
+                );
+
+
+        call.enqueue(new Callback<NearbyPlaces>() {
+            @Override
+            public void onResponse(Call<NearbyPlaces> call, Response<NearbyPlaces> response) {
+
+                if(response.isSuccessful()){
+                    NearbyPlaces nearbyPlacesList = response.body();
+                    Log.d(TAG, nearbyPlacesList.getResults().get(0).getName());
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NearbyPlaces> call, Throwable t) {
+                Log.d(TAG, t.getLocalizedMessage());
+            }
+        });
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Implementation for Google Places Autocomplete
+     *
+     */
+
+    public void initializeApiClient(){
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, 0 /* clientId */, this)
+                .addApi(Places.GEO_DATA_API)
+                .build();
+
+    }
+
+
+    public void loadAutoComplete(){
 
         // Retrieve the AutoCompleteTextView that will display Place suggestions.
         mAutocompleteView = (AutoCompleteTextView)
@@ -83,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         // Register a listener that receives callbacks when a suggestion has been selected
         mAutocompleteView.setOnItemClickListener(mAutocompleteClickListener);
 
-        // Set up the adapter that will retrieve suggestions from the Places Geo Data API that cover
+        // Set up the adapter that will retrieve suggestions from the NearbyPlaces Geo Data API that cover
         // the entire world.
         mAdapter = new PlaceAutocompleteAdapter(this, mGoogleApiClient, BOUNDS_GREATER_SYDNEY,
                 null);
@@ -98,15 +177,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             }
         });
 
-
     }
-
 
 
     /**
      * Listener that handles selections from suggestions from the AutoCompleteTextView that
      * displays Place suggestions.
-     * Gets the place id of the selected item and issues a request to the Places Geo Data API
+     * Gets the place id of the selected item and issues a request to the NearbyPlaces Geo Data API
      * to retrieve more details about the place.
      *
      * @see com.google.android.gms.location.places.GeoDataApi#getPlaceById(com.google.android.gms.common.api.GoogleApiClient,
@@ -127,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             Log.i(TAG, "Autocomplete item selected: " + primaryText);
 
             /*
-             Issue a request to the Places Geo Data API to retrieve a Place object with additional
+             Issue a request to the NearbyPlaces Geo Data API to retrieve a Place object with additional
              details about the place.
               */
             PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
@@ -143,8 +220,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         }
     };
 
+
     /**
-     * Callback for results from a Places Geo Data API query that shows the first place result in
+     * Callback for results from a NearbyPlaces Geo Data API query that shows the first place result in
      * the details view on screen.
      */
 
@@ -176,8 +254,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     };
 
 
-
-
     /**
      * Called when the Activity could not connect to Google Play services and the auto manager
      * could resolve the error automatically.
@@ -203,5 +279,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
+
+
+
+
 
 }

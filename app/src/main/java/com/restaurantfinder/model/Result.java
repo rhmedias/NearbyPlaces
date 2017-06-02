@@ -4,6 +4,8 @@ package com.restaurantfinder.model;
  * @author Tosin Onikute.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,8 +17,11 @@ public class Result {
     private String icon;
     private String id;
     private String name;
+
+    @SerializedName("opening_hours")
     private OpeningHours openingHours;
     private List<Photo> photos = null;
+    @SerializedName("place_id")
     private String placeId;
     private Double rating;
     private String reference;

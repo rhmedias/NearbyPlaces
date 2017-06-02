@@ -4,6 +4,8 @@ package com.restaurantfinder.model;
  * @author Tosin Onikute.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +13,9 @@ import java.util.Map;
 public class Photo {
 
     private Integer height;
+    @SerializedName("html_attributions")
     private List<String> htmlAttributions = null;
+    @SerializedName("photo_reference")
     private String photoReference;
     private Integer width;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

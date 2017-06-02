@@ -47,7 +47,7 @@ public class PlaceAutocompleteAdapter
     private GoogleApiClient mGoogleApiClient;
 
     /**
-     * The bounds used for Places Geo Data autocomplete API requests.
+     * The bounds used for NearbyPlaces Geo Data autocomplete API requests.
      */
     private LatLngBounds mBounds;
 
@@ -168,7 +168,7 @@ public class PlaceAutocompleteAdapter
     }
 
     /**
-     * Submits an autocomplete query to the Places Geo Data Autocomplete API.
+     * Submits an autocomplete query to the NearbyPlaces Geo Data Autocomplete API.
      * Results are returned as frozen AutocompletePrediction objects, ready to be cached.
      * objects to store the Place ID and description that the API returns.
      * Returns an empty list if no results were found.

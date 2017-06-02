@@ -1,18 +1,15 @@
 package com.restaurantfinder.ui.search;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.restaurantfinder.model.Places;
+import com.restaurantfinder.R;
+import com.restaurantfinder.model.NearbyPlaces;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +24,7 @@ public class ListRestaurantAdapter
 
     private final TypedValue mTypedValue = new TypedValue();
     private int mBackground;
-    private ArrayList<Places> mPlaces;
+    private ArrayList<NearbyPlaces> mPlaces;
     Context mContext;
     RecyclerView recyclerView;
     private String aTitle;
@@ -57,7 +54,7 @@ public class ListRestaurantAdapter
         return String.valueOf(mPlaces.get(position).getResults().get(0).getId());
     }
 
-    public ListRestaurantAdapter(Context context, ArrayList<Places> places) {
+    public ListRestaurantAdapter(Context context, ArrayList<NearbyPlaces> places) {
         context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
         mContext = context;
         mBackground = mTypedValue.resourceId;
@@ -67,7 +64,7 @@ public class ListRestaurantAdapter
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.display_list, parent, false);
+                .inflate(R.layout.restaurant_list, parent, false);
         view.setBackgroundResource(mBackground);
         return new ViewHolder(view);
     }
@@ -76,7 +73,7 @@ public class ListRestaurantAdapter
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         /* Set your values */
 
-        final Places model = (Places) mPlaces.get(position);
+        final NearbyPlaces model = (NearbyPlaces) mPlaces.get(position);
 
 
 
@@ -87,7 +84,7 @@ public class ListRestaurantAdapter
         return (null != mPlaces ? mPlaces.size() : 0);
     }
 
-    public void addAll(List<Places> data){
+    public void addAll(List<NearbyPlaces> data){
         //mPlaces.addAll(data);
         notifyDataSetChanged();
     }

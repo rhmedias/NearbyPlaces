@@ -9,13 +9,23 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        resValue "string", "GEO_API_KEY", "\"AIzaSyDFRxceLa_qG-81HU0c4LJKQu8bNRG_BmI\""
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    aaptOptions {
+        cruncherEnabled = false
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+        preDexLibraries = false
     }
 }
 
@@ -26,9 +36,10 @@ ext {
     constraintlayoutVer = '1.0.1'
     retrofit2 = '2.3.0'
     gson = '2.7'
-    okhttp = '2.7.0'
+    okhttp = '3.4.1'
     javaxAnn = '10.0-b28'
     playServiceVer = '10.0.1'
+    loggingInterceptor = '3.4.1'
 }
 
 dependencies {
@@ -48,11 +59,13 @@ dependencies {
     compile "com.android.support:animated-vector-drawable:${supportLibVer}"
     compile "com.android.support:mediarouter-v7:${supportLibVer}"
 
-    // Retrofit
+    // Retrofit and Okhttp3
     compile "com.squareup.retrofit2:retrofit:${retrofit2}"
     compile "com.squareup.retrofit2:converter-gson:${retrofit2}"
     compile "com.google.code.gson:gson:${gson}"
-    compile "com.squareup.okhttp:okhttp:${okhttp}"
+    compile "com.squareup.okhttp3:okhttp:${okhttp}"
+    compile "com.squareup.okhttp3:logging-interceptor:${loggingInterceptor}"
+
     provided "org.glassfish:javax.annotation:${javaxAnn}"
 
     // PlayServices
@@ -60,4 +73,5 @@ dependencies {
 
     // Junit
     testCompile "junit:junit:${junit}"
+
 }

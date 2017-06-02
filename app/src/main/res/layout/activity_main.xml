@@ -62,6 +62,12 @@
             android:focusableInTouchMode="true"
             android:singleLine="true" />
 
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
     </LinearLayout>
 
 

@@ -4,13 +4,17 @@ package com.restaurantfinder.model;
  * @author Tosin Onikute.
  */
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class OpeningHours {
 
+    @SerializedName("open_now")
     private Boolean openNow;
+    @SerializedName("weekday_test")
     private List<Object> weekdayText = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
