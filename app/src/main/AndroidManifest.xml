@@ -27,7 +27,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/GEO_API_KEY" />
 
-        <activity android:name=".ui.list.ListNearbyPlacesActivity"></activity>
+        <activity android:name=".ui.list.ListNearbyPlacesActivity" />
+        <activity android:name=".ui.detail.PlacesDetailActivity"></activity>
     </application>
 
 </manifest>

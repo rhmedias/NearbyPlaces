@@ -1,6 +1,8 @@
 package com.restaurantfinder.ui.search;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,12 +25,7 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.restaurantfinder.R;
-import com.restaurantfinder.client.RestClient;
-import com.restaurantfinder.model.NearbyPlaces;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.restaurantfinder.ui.list.ListNearbyPlacesActivity;
 
 /**
  * @author Tosin Onikute.
@@ -53,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
 
     private Button searchButton;
-    private String apiKey;
+
 
 
     @Override
@@ -73,9 +70,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         // Retrieve the AutoCompleteTextView that will display Place suggestions.
         loadAutoComplete();
 
-        // Get API KEY
-        apiKey = getApplicationContext().getResources().getString(R.string.GEO_API_KEY);
-
 
         searchButton = (Button) findViewById(R.id.search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -93,36 +87,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     public void fetch(){
 
-
-        Call<NearbyPlaces> call =
-                RestClient.getInstance().getPlaces(
-                        "-33.8670522,151.1957362",
-                        500,
-                        "cruise",
-                        "restaurant",
-                        apiKey
-                );
-
-
-        call.enqueue(new Callback<NearbyPlaces>() {
-            @Override
-            public void onResponse(Call<NearbyPlaces> call, Response<NearbyPlaces> response) {
-
-                if(response.isSuccessful()){
-                    NearbyPlaces nearbyPlacesList = response.body();
-                    Log.d(TAG, nearbyPlacesList.getResults().get(0).getName());
-
-                } else {
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<NearbyPlaces> call, Throwable t) {
-                Log.d(TAG, t.getLocalizedMessage());
-            }
-        });
-
+        Context context = getApplicationContext();
+        Intent intent = new Intent(context, ListNearbyPlacesActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("extra1", "1");
+        intent.putExtra("extra2", "2");
+        context.startActivity(intent);
 
     }
 
@@ -236,6 +206,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 places.release();
                 return;
             }
+
             // Get the Place object from the buffer.
             final Place place = places.get(0);
 
