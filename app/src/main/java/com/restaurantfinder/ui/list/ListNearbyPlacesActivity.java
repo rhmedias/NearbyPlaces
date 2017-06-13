@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -25,6 +26,11 @@ public class ListNearbyPlacesActivity extends AppCompatActivity {
     private ListNearbyAdapter adapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
+
+    private String lnglat = "";
+    private String type;
+    private int radius;
+    private String keyword;
     private String apiKey;
 
     @Override
@@ -32,54 +38,50 @@ public class ListNearbyPlacesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_nearby_places);
 
-
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             // values
-//            position = extras.getInt("position");
-//            setValues();
+            lnglat = extras.getString("lnglat");
         }
+
+        type = "restaurant";
+        radius = 500;
+        keyword = "cruise";
 
         // Get API KEY
         apiKey = getApplicationContext().getResources().getString(R.string.GEO_API_KEY);
-
 
         recyclerView = (RecyclerView) findViewById(R.id.places_recyclerview);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
-
         Call<NearbyPlaces> call =
                 RestClient.getInstance().getPlaces(
-                        "-33.8670522,151.1957362",
-                        500,
-                        "cruise",
-                        "restaurant",
+                        lnglat,
+                        radius,
+                        keyword,
+                        type,
                         apiKey
                 );
-
 
         call.enqueue(new Callback<NearbyPlaces>() {
             @Override
             public void onResponse(Call<NearbyPlaces> call, Response<NearbyPlaces> response) {
-
                 if(response.isSuccessful()){
                     NearbyPlaces nearbyPlaces = response.body();
-
                     ArrayList<Result> nearbyPlacesList = new ArrayList<Result>(nearbyPlaces.getResults());
 
-                    //Log.d(TAG, nearbyPlaces.getResults().get(0).getName());
                     adapter = new ListNearbyAdapter(getApplicationContext(), nearbyPlacesList);
                     recyclerView.setAdapter(adapter);
 
-
-
-
-
                 } else {
-
+                    //
                 }
             }
 

@@ -14,6 +14,7 @@ import com.restaurantfinder.R;
 import com.restaurantfinder.model.NearbyPlaces;
 import com.restaurantfinder.model.Result;
 import com.restaurantfinder.ui.detail.PlacesDetailActivity;
+import com.restaurantfinder.ui.list.ListNearbyPlacesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,6 @@ public class ListNearbyAdapter
     private String aTitle;
     private String mName;
     private String mVicinity;
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
@@ -95,13 +95,16 @@ public class ListNearbyAdapter
             mVicinity = model.getName() ;
         }
 
+        holder.name.setText(mName);
+        holder.vicinity.setText(mVicinity);
+
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                Intent intent = new Intent(context, PlacesDetailActivity.class);
-                intent.putExtra("extras1", "1");
+                Intent intent = new Intent(context, ListNearbyPlacesActivity.class);
+                intent.putExtra("latlng", "1");
                 context.startActivity(intent);
             }
         });

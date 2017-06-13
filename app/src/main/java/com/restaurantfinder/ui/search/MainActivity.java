@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
 
     private Button searchButton;
+    private String lnglat = "";
 
 
 
@@ -81,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
 
 
-
     }
 
 
@@ -90,8 +90,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         Context context = getApplicationContext();
         Intent intent = new Intent(context, ListNearbyPlacesActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("extra1", "1");
-        intent.putExtra("extra2", "2");
+        intent.putExtra("lnglat", lnglat);
         context.startActivity(intent);
 
     }
@@ -209,6 +208,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
             // Get the Place object from the buffer.
             final Place place = places.get(0);
+
+            lnglat = place.getLatLng().toString().trim();
+            lnglat = lnglat.substring(10,lnglat.length()-1);
 
             // Display the third party attributions if set.
             final CharSequence thirdPartyAttribution = places.getAttributions();

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\AndroidStudioProjects\NearbyPlaces\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\NearbyPlaces\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_d3b733cd2a2baafba4f2e5a55c50f225513005c1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.3.0\9e09011e9767bb76b5e27c9b8223476b93b14631\converter-gson-2.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9e09011e9767bb76b5e27c9b8223476b93b14631">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\NearbyPlaces\app\build\intermediates\transforms\dex\debug\folders\1000\10\converter-gson-2.3.0_b6c8ec13acd008cb923688d7f7206bf32f76e521\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\NearbyPlaces\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_9693a4b7d09a61e5b25576c543bc33fda15f7975\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\AndroidStudioProjects\NearbyPlaces\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3b0259603923f5e29a4c1806e6c1f50038ef4b21">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\NearbyPlaces\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b4050aa8fc7610ab241c8417f4a8b8a8aa8035d4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tosin\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\logging-interceptor\3.4.1\381fc1096ba65040d8e80ea43b2e1d9bad02345e\logging-interceptor-3.4.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="381fc1096ba65040d8e80ea43b2e1d9bad02345e">
+        <dex dex="C:\Users\tosin\AndroidStudioProjects\NearbyPlaces\app\build\intermediates\transforms\dex\debug\folders\1000\10\logging-interceptor-3.4.1_d1cc69c525ad22742393193795b32a7561cf433e\classes.dex" />
+    </item>
+
+</items>
