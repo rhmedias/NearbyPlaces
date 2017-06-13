@@ -16,8 +16,12 @@ public interface PlacesInterface {
     Call<NearbyPlaces> getPlaces(
             @Query("location") String location,
             @Query("radius") int radius,
-            @Query("keyword") String keyword,
             @Query("type") String type,
+            @Query("key") String key);
+
+    @GET("nearbysearch/json")
+    Call<NearbyPlaces> getPlacesWithQuery(
+            @Query("query") String type,
             @Query("key") String key);
 
 }

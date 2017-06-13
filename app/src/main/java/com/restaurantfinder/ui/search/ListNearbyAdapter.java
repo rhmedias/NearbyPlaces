@@ -14,7 +14,6 @@ import com.restaurantfinder.R;
 import com.restaurantfinder.model.NearbyPlaces;
 import com.restaurantfinder.model.Result;
 import com.restaurantfinder.ui.detail.PlacesDetailActivity;
-import com.restaurantfinder.ui.list.ListNearbyPlacesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,8 +102,8 @@ public class ListNearbyAdapter
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                Intent intent = new Intent(context, ListNearbyPlacesActivity.class);
-                intent.putExtra("latlng", "1");
+                Intent intent = new Intent(context, PlacesDetailActivity.class);
+                intent.putExtra("placeid", "1");
                 context.startActivity(intent);
             }
         });

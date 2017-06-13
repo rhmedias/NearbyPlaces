@@ -34,10 +34,13 @@ public class RestClient {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
+        //Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
+                //.addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         REST_CLIENT = retrofit.create(PlacesInterface.class);
     }

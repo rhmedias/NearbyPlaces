@@ -80,30 +80,27 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             }
         });
 
-
-
     }
 
 
     public void fetch(){
 
+        String queryString = "";
+
+        if(mAutocompleteView.getText().toString() != "") {
+            queryString = "restaurants+in+";
+            queryString += mAutocompleteView.getText().toString();
+            queryString = queryString.replace(" ", "+");
+        }
+
         Context context = getApplicationContext();
         Intent intent = new Intent(context, ListNearbyPlacesActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("query", queryString);
         intent.putExtra("lnglat", lnglat);
         context.startActivity(intent);
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -184,7 +181,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     Toast.LENGTH_SHORT).show();
 
 
-
             Log.i(TAG, "Called getPlaceById to get Place details for " + placeId);
         }
     };
@@ -211,6 +207,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
             lnglat = place.getLatLng().toString().trim();
             lnglat = lnglat.substring(10,lnglat.length()-1);
+
+
+            if(lnglat != null){
+                enableSearchButton();
+            }
 
             // Display the third party attributions if set.
             final CharSequence thirdPartyAttribution = places.getAttributions();
@@ -251,6 +252,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public void enableSearchButton(){
+        searchButton.setEnabled(true);
     }
 
 
