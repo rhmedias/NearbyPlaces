@@ -1,1 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context="com.rhmedias.android.restaurantfinder.MainActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@drawable/finder" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/keyword_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etKeyword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:hint="@string/keyword"
+                android:textSize="20sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:text="select a place type"
+            android:textAllCaps="true"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="@color/colorOrange" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/rest_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="70dp"
+            android:src="@drawable/rest" />
+
+        <ImageView
+            android:id="@+id/cafe_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/cafe" />
+
+        <ImageView
+            android:id="@+id/takeaway_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="70dp"
+            android:src="@drawable/takeaway3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rest_image"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:text="Restaurant"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="@color/colorOrange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cafe_image"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:text="Cafe"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="@color/colorOrange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/takeaway_image"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="20dp"
+            android:text="Takeaway"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="@color/colorOrange" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/bakery_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="70dp"
+            android:src="@drawable/bakery1" />
+
+        <ImageView
+            android:id="@+id/saved_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/saved" />
+
+        <ImageView
+            android:id="@+id/more_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="70dp"
+            android:src="@drawable/more" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bakery_image"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:text="Bakery"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="@color/colorOrange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/saved_image"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:text="Favorite"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="@color/colorOrange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/more_image"
+            android:layout_marginRight="90dp"
+            android:layout_marginTop="20dp"
+            android:text="More"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="@color/colorOrange" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:text="recently viewed places"
+            android:textAllCaps="true"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="@color/colorOrange" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_toLeftOf="@+id/imageView"
+            android:layout_toStartOf="@+id/imageView"
+            android:src="@drawable/hotel"
+
+            />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/hotel3" />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:src="@drawable/hotel1" />
+    </RelativeLayout>
+
+
+</LinearLayout>
 
